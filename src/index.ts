@@ -5,7 +5,7 @@ import config from "./config";
 import swaggerSpecs from "./config/configSwagger";
 import connectDB from "./data/database/db";
 import router from "./router";
-
+import cors from 'cors';
 
 const app = express();
 
@@ -15,6 +15,15 @@ app.set("port", process.env.PORT || 3000);
 
 app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: true }));
+app.use(
+  cors({
+     credentials: true,
+     origin: [
+       "https://frontend-joohaem.vercel.app/",
+       "3.90.162.48:8000",
+     ],
+   })
+ );
 app.use(express.json());
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpecs));
 app.use(router)

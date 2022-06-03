@@ -1,9 +1,10 @@
 import { Router } from "express";
 import ReviewRouter from './ReviewRouter';
 
+
 const router = Router();
 
-router.use('/review', ReviewRouter);
+router.use('/review' ,ReviewRouter);
 /**
  * Router url Mapping Logic
  *
